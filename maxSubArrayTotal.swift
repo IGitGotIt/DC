@@ -23,23 +23,23 @@ func maxSubArrayTotal(_ a: [Int],  inIndex i: Int = 0, total t: Int = 0)  -> Int
 }
 
 func maxSubArrayTotal2(_ a:[Int]) -> Int {
-    var max_seen_so_far: Int = 0 , maxOverAll: Int = 0
+    var max_ending_here: Int = 0 , max_so_far: Int = 0
     
     for num in a {
-        max_seen_so_far = max(num, max_seen_so_far+num)
-        maxOverAll = max(maxOverAll, max_seen_so_far)
+        max_ending_here = max(num, max_ending_here+num)
+        max_so_far = max(max_so_far, max_ending_here)
     }
-    return maxOverAll
+    return max_so_far
 }
 
 func minSubArrayTotal2(_ a:[Int]) -> Int {
-    var min_seen_so_far: Int = 0 , minOverAll: Int = 0
+    var min_ending_here: Int = 0 , min_so_far: Int = 0
     
     for num in a {
-        min_seen_so_far = min(num, min_seen_so_far+num)
-        minOverAll = min(minOverAll, min_seen_so_far)
+        min_ending_here = min(num, min_ending_here+num)
+        min_so_far = min(min_so_far, min_ending_here)
     }
-    return minOverAll
+    return min_so_far
 }
 func maxSubArrayWrapTotal3(_ a: [Int]) -> Int {
     let sumOfArray = a.reduce(0, +)
@@ -49,3 +49,7 @@ func maxSubArrayWrapTotal3(_ a: [Int]) -> Int {
 
 }
 maxSubArrayWrapTotal3(a)
+
+
+
+

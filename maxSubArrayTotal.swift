@@ -1,25 +1,16 @@
 
 let a: [Int] = [8,-1, 3, 4]
 
-func maxSubArrayTotal(_ a: [Int],  inIndex i: Int = 0, total t: Int = 0)  -> Int  {
+func maxSubArrayTotal(_ a: [Int],  inIndex i: Int = 0) -> Int {
     
     if a.count == 0  {
         return 0
     }
     if i > a.endIndex - 1 {
-       return  maxSubArrayTotal(Array(a[1...]), inIndex: 0, total: t)
-        
+        return maxSubArrayTotal(Array(a[1...]), inIndex: 0)
+       
     }
-   
-    print(a[...i])
-    let total = a[...i].reduce(0, +)
-    let maxTotal = total>t ? total : t
-    print(t)
-    
-    maxSubArrayTotal(a,  inIndex: i+1, total: maxTotal)
-    return maxTotal
-
-    
+    return max(a[...i].reduce(0, +), maxSubArrayTotal(a,  inIndex: i+1))
 }
 
 func maxSubArrayTotal2(_ a:[Int]) -> Int {
